@@ -6,15 +6,15 @@ Author: <https://github.com/itwars>
 
 Build a Kubernetes cluster using Ansible with k3s. The goal is easily install a Kubernetes cluster on machines running:
 
-- [X] Debian
+- [] Debian
 - [X] Ubuntu
-- [X] CentOS
+- [] CentOS
 
 on processor architecture:
 
-- [X] x64
+- [] x64
 - [X] arm64
-- [X] armhf
+- [] armhf
 
 ## System requirements
 
@@ -26,10 +26,11 @@ Master and nodes must have passwordless SSH access
 First create a new directory based on the `sample` directory within the `inventory` directory:
 
 ```bash
-cp -R inventory/sample inventory/my-cluster
+$ cp -R inventory/sample inventory/pi-cluster
+...
 ```
 
-Second, edit `inventory/my-cluster/hosts.ini` to match the system information gathered above. For example:
+Second, edit `inventory/pi-cluster/hosts.ini` to match the system information gathered above. For example:
 
 ```bash
 [master]
@@ -43,12 +44,14 @@ master
 node
 ```
 
-If needed, you can also edit `inventory/my-cluster/group_vars/all.yml` to match your environment.
+If needed, you can also edit `inventory/pi-cluster/group_vars/all.yml` to match your environment.
+For instance, the `ansible_user` variable should probably be changed, as well as `ansible_sudo_pass` if needed.
 
 Start provisioning of the cluster using the following command:
 
 ```bash
-ansible-playbook site.yml -i inventory/my-cluster/hosts.ini
+$ ansible-playbook site.yml -i inventory/pi-cluster/hosts.ini
+...
 ```
 
 ## Kubeconfig
@@ -56,5 +59,6 @@ ansible-playbook site.yml -i inventory/my-cluster/hosts.ini
 To get access to your **Kubernetes** cluster just
 
 ```bash
-scp debian@master_ip:~/.kube/config ~/.kube/config
+$ scp <USER>@master_ip:~/.kube/config ~/.kube/config
+...
 ```

@@ -3,5 +3,5 @@ k3s_version: v1.20.4+k3s1
 ansible_user: charles
 systemd_dir: /etc/systemd/system
 master_ip: "{{ hostvars[groups['master'][0]]['ansible_host'] | default(groups['master'][0]) }}"
-extra_server_args: "--flannel-backend=none --disable-network-policy --cluster-cidr=192.168.0.0/16 --disable traefik --disable servicelb"
+extra_server_args: "--flannel-backend=none --disable-network-policy --cluster-cidr=172.17.0.0/16 --disable traefik --disable servicelb"
 extra_agent_args: ""

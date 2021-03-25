@@ -1,3 +1,5 @@
+---
+
 - name: Update Hostname
   hostname:
     name: "{{ new_hostname }}"

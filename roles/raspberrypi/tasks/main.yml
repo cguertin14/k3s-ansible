@@ -1,4 +1,5 @@
 ---
+
 - name: Test for raspberry pi /proc/cpuinfo
   command: grep -E "Raspberry Pi|BCM2708|BCM2709|BCM2835|BCM2836" /proc/cpuinfo
   register: grep_cpuinfo_raspberrypi
@@ -49,3 +50,20 @@
     - "prereq/default.yml"
   when:
     - raspberry_pi|default(false)
+
+- name: Install rpi-eeprom on Pi
+  become: yes
+  apt:
+    name: rpi-eeprom
+    update_cache: yes
+
+- name: Run rpi-eeprom update on Pi
+  become: yes
+  command: rpi-eeprom-update
+
+- name: Add Ansible user to video group
+  user:
+    name: '{{ ansible_user }}'
+    groups: 
+    - video
+    append: yes

@@ -6,15 +6,15 @@ Author: <https://github.com/itwars>
 
 Build a Kubernetes cluster using Ansible with k3s. The goal is easily install a Kubernetes cluster on machines running:
 
-- [] Debian
+- [ ] Debian
 - [X] Ubuntu
-- [] CentOS
+- [ ] CentOS
 
 on processor architecture:
 
-- [] x64
+- [ ] x64
 - [X] arm64
-- [] armhf
+- [ ] armhf
 
 ## System requirements
 
@@ -50,7 +50,7 @@ For instance, the `ansible_user` variable should probably be changed, as well as
 Start provisioning of the cluster using the following command:
 
 ```bash
-$ ansible-playbook site.yml -i inventory/pi-cluster/hosts.ini
+$ ansible-playbook site.yml -i inventory/pi-cluster/hosts.ini --extra-vars "ansible_sudo_pass=SPECIFY_PWD_HERE"
 ...
 ```
 

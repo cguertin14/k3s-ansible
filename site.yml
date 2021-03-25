@@ -10,10 +10,15 @@
 
 - hosts: master
   become: yes
+  any_errors_fatal: true
   roles:
+    - role: ansible-netplan
     - role: k3s/master
 
 - hosts: node
   become: yes
+  tasks:
+  - debug: var=ansible_default_ipv4.address
   roles:
-    - role: k3s/node
+  - role: ansible-netplan
+  - role: k3s/node

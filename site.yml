@@ -15,7 +15,6 @@
     - role: hostname
     - role: ansible-netplan
     - role: k3s/master
-    - role: k3s/cni
 
 - hosts: node
   become: yes
@@ -23,4 +22,3 @@
     - role: hostname
     - role: ansible-netplan
     - role: k3s/node
-    - role: k3s/cni

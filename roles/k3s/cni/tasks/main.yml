@@ -1,7 +1,0 @@
-- name: Copy Calico CNI configuration
-  template:
-    src: "cni.calico.j2"
-    dest: "/etc/cni/net.d/10-calico.conflist"
-    owner: root
-    group: root
-    mode: 0644

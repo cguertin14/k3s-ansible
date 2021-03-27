@@ -67,3 +67,9 @@
     groups: 
     - video
     append: yes
+
+- name: Install NFS client
+  apt:
+    name: nfs-common
+    state: present
+    update_cache: yes

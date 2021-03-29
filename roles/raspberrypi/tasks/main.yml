@@ -82,3 +82,11 @@
     owner: root
     group: root
     mode: 0644
+
+- name: Reload udev thermal rules
+  become: yes
+  command: udevadm control --reload-rules 
+  
+- name: Trigger udevadm reload
+  become: yes
+  command: udevadm trigger

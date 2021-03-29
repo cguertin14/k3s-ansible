@@ -7,18 +7,16 @@
     - role: prereq
     - role: download
     - role: raspberrypi
+    - role: hostname
+    - role: ansible-netplan
 
 - hosts: master
   become: yes
   any_errors_fatal: true
   roles:
-    - role: hostname
-    - role: ansible-netplan
     - role: k3s/master
 
 - hosts: node
   become: yes
   roles:
-    - role: hostname
-    - role: ansible-netplan
     - role: k3s/node

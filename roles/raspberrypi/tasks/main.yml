@@ -51,11 +51,13 @@
   when:
     - raspberry_pi|default(false)
 
-- name: Install rpi-eeprom on Pi
+- name: Install APT packages
   become: yes
   apt:
-    name: rpi-eeprom
-    update_cache: yes
+    pkg:
+    - rpi-eeprom
+    - nfs-common
+    - net-tools
 
 - name: Run rpi-eeprom update on Pi
   become: yes
@@ -67,12 +69,6 @@
     groups: 
     - video
     append: yes
-
-- name: Install NFS client
-  apt:
-    name: nfs-common
-    state: present
-    update_cache: yes
 
 - name: Set thermal rules
   become: yes

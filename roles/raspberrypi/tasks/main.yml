@@ -70,14 +70,14 @@
     - video
     append: yes
 
-- name: Set thermal rules
-  become: yes
-  template:
-    src: thermal-settings.rules.j2
-    dest: /etc/udev/rules.d/50-rpi-fan.rules
-    owner: root
-    group: root
-    mode: 0644
+# - name: Set thermal rules
+#   become: yes
+#   template:
+#     src: thermal-settings.rules.j2
+#     dest: /etc/udev/rules.d/50-rpi-fan.rules
+#     owner: root
+#     group: root
+#     mode: 0644
 
 - name: Reload udev thermal rules
   become: yes
